@@ -1,4 +1,4 @@
-package com.example.temperatureconversion.web;
+package eu.york.cloud_computing.file_conversion_service.converter_server.services;
 
 import java.util.logging.Logger;
 
@@ -9,16 +9,16 @@ import org.springframework.web.client.RestTemplate;
 
 // Responsible for communicating with the c2f controller
 @Service
-public class WebC2FService {
+public class TextToPDFCommunicationService {
 	
 	@Autowired
 	@LoadBalanced
 	protected RestTemplate restTemplate;
 	
 	protected String serviceUrl;
-	protected Logger logger = Logger.getLogger(WebC2FService.class.getName());
+	protected Logger logger = Logger.getLogger(TextToPDFCommunicationService.class.getName());
 
-	public WebC2FService(String serviceUrl) {
+	public TextToPDFCommunicationService(String serviceUrl) {
 		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl : "http://" + serviceUrl;
 	}
 

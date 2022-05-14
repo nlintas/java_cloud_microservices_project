@@ -9,11 +9,11 @@
         <version>2.6.7</version>
         <relativePath/>
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>temperature-conversion</artifactId>
+    <groupId>eu.york.microservices.fileconversion</groupId>
+    <artifactId>file-conversion</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>temperature-conversion</name>
-    <description>Demo project for Spring Boot</description>
+    <name>file-conversion</name>
+    <description>In this project several technologies will enable the creation of an application that will allow for independent microservices to handle file conversion. These will coordinate initially with a Netflix Eureka server and then be Dockerized and managed by Kubernetes.</description>
 
 
     <properties>

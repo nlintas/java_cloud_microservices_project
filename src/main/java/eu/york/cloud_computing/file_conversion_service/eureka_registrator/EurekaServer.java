@@ -1,4 +1,4 @@
-package com.example.temperatureconversion.registration;
+package eu.york.cloud_computing.file_conversion_service.eureka_registrator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,14 +1,15 @@
-package com.example.temperatureconversion.web;
+package eu.york.cloud_computing.file_conversion_service.converter_server;
 
+import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.ConversionController;
+import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController;
+import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFCommunicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
@@ -45,13 +46,13 @@ public class WebServer {
 	}
 
 	@Bean
-	public WebC2FService c2fService() {
-		return new WebC2FService(C2F_SERVICE_URL);
+	public TextToPDFCommunicationService c2fService() {
+		return new TextToPDFCommunicationService(C2F_SERVICE_URL);
 	}
 
 	@Bean
-	public WebConversionController c2fController() {
-		return new WebConversionController(c2fService());
+	public ConversionController c2fController() {
+		return new ConversionController(c2fService());
 	}
 
 	@Bean
