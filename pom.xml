@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!--	Bumped	-->
+        <!--	Bumped to latest version	-->
         <version>2.6.7</version>
         <relativePath/>
     </parent>
@@ -13,17 +13,26 @@
     <artifactId>file-conversion</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>file-conversion</name>
-    <description>In this project several technologies will enable the creation of an application that will allow for independent microservices to handle file conversion. These will coordinate initially with a Netflix Eureka server and then be Dockerized and managed by Kubernetes.</description>
+    <description>In this project several technologies will enable the creation of an application that will allow for
+        independent microservices to handle file conversion. These will coordinate initially with a Netflix Eureka
+        server and then be Dockerized and managed by Kubernetes.
+    </description>
 
 
     <properties>
         <!--    Changed for OpenJDK 18 (This uses jdk 17 in compilation time with a compatibility layer for 18's new features if used.)    -->
         <java.version>17</java.version>
-        <!--	Bumped	-->
+        <!--	Bumped to latest version	-->
         <spring-cloud.version>2021.0.2</spring-cloud.version>
     </properties>
 
     <dependencies>
+        <!--   iText text to PDF converter     -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.3</version>
+        </dependency>
         <!--    Added dependency for support of the latest spring cloud and springboot framework versions.    -->
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
