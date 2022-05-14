@@ -1,0 +1,24 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+
+	<h1>Spring Boot Microservices Example</h1>
+	<h3>Temperature Conversion Service</h3>
+	<form action="/c2f">
+	  	Degrees Celsius:<br>
+	  	<input type="number" name="input" value="0">
+	  	<br>
+	  	<br>
+	  	<input type="submit" value="Submit">
+	</form>	
+	<hr>
+	
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>
