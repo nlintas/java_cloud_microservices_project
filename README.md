@@ -3,8 +3,8 @@ In this project several technologies will enable the creation of an application 
 
 ## Run Instructions
 1. Initialize the Eureka server.
-2. Initialize the microservices.
-3. Initialize the web server (if at this point microservices are not running, HTTP Error 500 may occur and exception of type: no instance of 'x' microservice running will be thrown).
+2. Initialize the web server.
+3. Initialize the microservices (if at this point the server fails to serve results, HTTP Error 500 may occur and exception of type: no instance of 'x' microservice running will be thrown).
 4. Open all web pages through the ports provided from Eureka (Eureka is at port 8761).
 
 ## Software Architecture
