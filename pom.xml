@@ -5,9 +5,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!--	Bumped from 2.2.7.RELEASE	-->
+        <!--	Bumped	-->
         <version>2.6.7</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>temperature-conversion</artifactId>
@@ -17,13 +17,14 @@
 
 
     <properties>
+        <!--    Changed for OpenJDK 18 (This uses jdk 17 in compilation time with a compatibility layer for 18's new features if used.)    -->
         <java.version>17</java.version>
         <!--	Bumped	-->
         <spring-cloud.version>2021.0.2</spring-cloud.version>
     </properties>
 
     <dependencies>
-        <!--    Added dependency because it wouldnt boot    -->
+        <!--    Added dependency for support of the latest spring cloud and springboot framework versions.    -->
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-apache-client4</artifactId>
@@ -70,6 +71,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
+                <!--        Depends on the Spring Cloud version which is now the latest.        -->
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
