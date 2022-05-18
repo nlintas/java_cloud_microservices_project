@@ -1,8 +1,8 @@
 package eu.york.cloud_computing.file_conversion_service.converter_server;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.ConversionController;
+import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.UserController;
 import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController;
-import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFTerminalService;
+import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -46,13 +46,13 @@ public class WebServer {
 	}
 
 	@Bean
-	public TextToPDFTerminalService c2fService() {
-		return new TextToPDFTerminalService(C2F_SERVICE_URL);
+	public TextToPDFPortal c2fService() {
+		return new TextToPDFPortal(C2F_SERVICE_URL);
 	}
 
 	@Bean
-	public ConversionController c2fController() {
-		return new ConversionController(c2fService());
+	public UserController c2fController() {
+		return new UserController(c2fService());
 	}
 
 	@Bean

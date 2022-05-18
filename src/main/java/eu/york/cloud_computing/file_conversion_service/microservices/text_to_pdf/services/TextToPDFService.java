@@ -7,26 +7,25 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import org.springframework.stereotype.Service;
 
-// Responsible for managing the conversion process of text to pdf's
 @Service
 public class TextToPDFService {
     // Methods
-    public byte[] c2f() {
+    public byte[] convertTextToPdf(String input) {
         // Create Pdf
         final ByteArrayOutputStream output = new ByteArrayOutputStream();
         var writer = new PdfWriter(output);
         var pdf = new PdfDocument(writer);
         var document = new Document(pdf);
         // Format
-        format(document);
+        format(document, input);
         // Finalize Operation
         document.close();
         return output.toByteArray();
     }
 
     // All pdf formatting should occur within. The document is preserved without a return.
-    private void format(Document document) {
-        document.add(new Paragraph("Test"));
+    private void format(Document document, String input) {
+        document.add(new Paragraph(input));
     }
 }
 

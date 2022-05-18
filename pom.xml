@@ -68,13 +68,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--    Allows for Auto-Restart in SpringBoot given the correct IDE config    -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>2.6.7</version>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
