@@ -2,7 +2,7 @@ package eu.york.cloud_computing.file_conversion_service.converter_server;
 
 import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.ConversionController;
 import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController;
-import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFCommunicationService;
+import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFTerminalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -46,8 +46,8 @@ public class WebServer {
 	}
 
 	@Bean
-	public TextToPDFCommunicationService c2fService() {
-		return new TextToPDFCommunicationService(C2F_SERVICE_URL);
+	public TextToPDFTerminalService c2fService() {
+		return new TextToPDFTerminalService(C2F_SERVICE_URL);
 	}
 
 	@Bean
