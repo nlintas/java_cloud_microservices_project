@@ -23,7 +23,7 @@ public class TextToPdfController {
 
     // Routes
     @RequestMapping("/txt2pdf")
-    public ResponseEntity<byte[]> serveTextToPdf(String input) throws Exception {
+    public ResponseEntity<byte[]> serveTextToPdf(String input) {
         // Create pdf name
         DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
@@ -37,6 +37,5 @@ public class TextToPdfController {
                 .header(headerKey, headerValue)
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(res);
-
     }
 }

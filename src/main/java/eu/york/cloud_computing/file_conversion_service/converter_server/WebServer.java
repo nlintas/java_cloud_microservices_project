@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class WebServer {
 
-	public static final String C2F_SERVICE_URL = "http://c2f-service"; 
+	public static final String TXT2PDF_SERVICE_URL = "http://text2pdf-microservice";
 	
 	@Autowired
     private static ApplicationContext applicationContext;
@@ -36,7 +36,8 @@ public class WebServer {
         for(String beanName : allBeanNames) {
             System.out.println(beanName);
         }
-        System.out.println(applicationContext.containsBeanDefinition("c2fServer"));
+		// Loads properties file, name must match
+        System.out.println(applicationContext.containsBeanDefinition("text2pdfServer"));
     }
 
 	@LoadBalanced 
@@ -46,13 +47,13 @@ public class WebServer {
 	}
 
 	@Bean
-	public TextToPDFPortal c2fService() {
-		return new TextToPDFPortal(C2F_SERVICE_URL);
+	public TextToPDFPortal text2pdfService() {
+		return new TextToPDFPortal(TXT2PDF_SERVICE_URL);
 	}
 
 	@Bean
-	public UserController c2fController() {
-		return new UserController(c2fService());
+	public UserController text2pdfController() {
+		return new UserController(text2pdfService());
 	}
 
 	@Bean

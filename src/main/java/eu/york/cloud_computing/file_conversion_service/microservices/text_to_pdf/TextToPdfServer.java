@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 public class TextToPdfServer {
 	public static void main(String[] args) {
-		System.setProperty("spring.config.name", "c2f-server");
+		System.setProperty("spring.config.name", "text2pdf-server");
 		SpringApplication.run(TextToPdfServer.class, args);
 	}
 }

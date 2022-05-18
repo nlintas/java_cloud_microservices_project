@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
     // Attributes
-    protected TextToPDFPortal c2fService;
+    protected TextToPDFPortal textToPDFPortal;
 
     // Constructor
-    public UserController(TextToPDFPortal c2fService) {
-        this.c2fService = c2fService;
+    public UserController(TextToPDFPortal textToPDFPortal) {
+        this.textToPDFPortal = textToPDFPortal;
     }
 
     // Endpoints
     @RequestMapping("/txt2pdf")
     public ResponseEntity<byte[]> requestTextToPdf(@RequestParam(defaultValue = "Test Text!") String input) {
-            return c2fService.sendTextToPDFRequest(input);
+            return textToPDFPortal.sendTextToPDFRequest(input);
     }
 }

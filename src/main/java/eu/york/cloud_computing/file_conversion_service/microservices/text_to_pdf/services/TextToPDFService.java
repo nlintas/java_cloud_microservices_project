@@ -16,6 +16,9 @@ public class TextToPDFService {
         var writer = new PdfWriter(output);
         var pdf = new PdfDocument(writer);
         var document = new Document(pdf);
+        // Provide some text if the input was null
+        if(input == null)
+            input = "Seems like no input was provided, here is some text for you!";
         // Format
         format(document, input);
         // Finalize Operation
