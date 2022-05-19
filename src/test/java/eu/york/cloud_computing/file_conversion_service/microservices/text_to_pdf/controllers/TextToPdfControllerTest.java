@@ -2,6 +2,7 @@ package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pd
 
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.services.TextToPDFService;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest(classes = {TextToPdfController.class, TextToPDFService.class})
 class TextToPdfControllerTest {
     TextToPDFService textToPDFService = new TextToPDFService();
     TextToPdfController textToPdfController = new TextToPdfController(textToPDFService);

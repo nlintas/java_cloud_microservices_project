@@ -20,7 +20,6 @@ public class UserController {
     @RequestMapping("/txt2pdf")
     public ResponseEntity<byte[]> requestTextToPdf(@RequestParam(defaultValue = "Test Text!") String input) {
         ResponseEntity<byte[]> res = textToPDFPortal.sendTextToPDFRequest(input);
-        System.out.println(res.getBody());
         return res;
     }
 }

@@ -11,13 +11,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController.class)
+@SpringBootTest(classes = HomeController.class)
 @AutoConfigureMockMvc
 class HomeControllerTest {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
-    private HomeController homeController = new HomeController();
+    HomeController homeController = new HomeController();
 
     // Unit Tests
     @Test
@@ -27,7 +27,7 @@ class HomeControllerTest {
 
     // Integration Tests
     @Test
-    void controllerRuns() throws Exception {
+    void controllerRedirectSuccess() throws Exception {
         mockMvc.perform(get("/").content("index")).andExpect(status().isOk()).andExpect(forwardedUrl("index"));
     }
 }

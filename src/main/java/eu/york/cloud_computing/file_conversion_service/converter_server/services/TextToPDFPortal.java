@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 
+// This class is untestable as of now (all logic depends on a response from another service).
 @Service
 public class TextToPDFPortal {
 	// Attributes
