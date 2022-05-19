@@ -16,7 +16,7 @@ class TextToPdfControllerTest {
     TextToPdfController textToPdfController = new TextToPdfController(textToPDFService);
 
     @Test
-    void serveTextToPdfReturnsPDFStatusSuccess() {
+    void serveTextToPdfReturnsPDFStatusSuccess() throws Exception {
         ResponseEntity<byte[]> res = textToPdfController.serveTextToPdf("hello");
         // Appropriate status code received
         assertEquals(res.getStatusCode(), HttpStatus.OK);
@@ -31,7 +31,7 @@ class TextToPdfControllerTest {
     }
 
     @Test
-    void serveTextToPdfGivenNullReturnsNonNullStatusSuccess() {
+    void serveTextToPdfGivenNullReturnsNonNullStatusSuccess() throws Exception {
         ResponseEntity<byte[]> res = textToPdfController.serveTextToPdf(null);
         // Not Null
         assertNotNull(res);

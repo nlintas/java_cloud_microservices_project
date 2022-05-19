@@ -3,7 +3,6 @@ package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pd
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.services.TextToPDFService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +23,7 @@ public class TextToPdfController {
 
     // Routes
     @RequestMapping(method = RequestMethod.POST, value = "/txt2pdf")
-    public ResponseEntity<byte[]> serveTextToPdf(String input) {
+    public ResponseEntity<byte[]> serveTextToPdf(String input) throws Exception {
         // Create pdf name
         DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
