@@ -1,12 +1,12 @@
 package eu.york.cloud_computing.file_conversion_service.converter_server.services;
 
-import java.util.Collections;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Collections;
 
 @Service
 public class TextToPDFPortal {

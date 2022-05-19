@@ -1,7 +1,7 @@
 package eu.york.cloud_computing.file_conversion_service.converter_server;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.UserController;
 import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController;
+import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.UserController;
 import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +22,7 @@ public class WebServer {
 	public static final String TXT2PDF_SERVICE_URL = "http://text2pdf-microservice";
 	
 	@Autowired
-    private static ApplicationContext applicationContext;
+    protected static ApplicationContext applicationContext;
 	
 	public static void main(String[] args) {
 		System.setProperty("spring.config.name", "web-server");

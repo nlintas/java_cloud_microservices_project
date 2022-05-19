@@ -1,7 +1,6 @@
 package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.controllers;
 
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.services.TextToPDFService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
