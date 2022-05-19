@@ -12,12 +12,14 @@ In this project several technologies will enable the creation of an application 
 ![](diagrams/CC CW Software Structure Diagram.jpg)
 
 ## Technologies
-- [Java 18](https://howtodoinjava.com/java-version-wise-features-history/) Alt Docs: [Original](https://docs.oracle.com/en/java/javase/18/)
-- [Netflix Eureka](https://cloud.spring.io/spring-cloud-netflix/reference/html/)
-- [SpringBoot Framework](https://docs.spring.io/spring-boot/docs/current/reference/html/)
-- [Thymeleaf Templating Language](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html)
-- [Docker](https://spring.io/guides/gs/spring-boot-docker/) Alt Docs: [Similar 1](https://spring.io/guides/topicals/spring-boot-docker/), [Docker with Java](https://docs.docker.com/language/java/)
-- [Kubernetes](https://docs.spring.io/spring-cloud-kubernetes/docs/current/reference/html/) Alt Docs: [1 (Original)](https://kubernetes.io/docs/home/)
-- [Intellij IDEA](https://www.jetbrains.com/help/idea/2022.1/spring-support.html)
+- Java 18
+- Netflix Eureka
+- SpringBoot Framework
+- Thymeleaf Templating Language
+- Docker (not yet integrated)
+- Kubernetes (not yet integrated)
+- Intellij IDEA
 
-## LOC??
+## Lines of Code Analysis
+Performed using the CLOC CLI tool.
+![](diagrams/cloc.png)
