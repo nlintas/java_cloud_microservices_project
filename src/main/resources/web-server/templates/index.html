@@ -13,7 +13,7 @@
     <p class="fw-lighter fst-italic">Hint: Changing line (with the Enter key) will create a pdf with multiple
         paragraphs.</p>
     <p class="fw-lighter fst-italic">Hint: If you have a .txt file feel free to copy and paste the content in the text area. We can also handle content from Microsoft Word, but only if it is convertible to plain text.</p>
-    <form action="/txt2pdf">
+    <form method="POST" action="/txt2pdf">
         <div class="user-input-wrapper">
             <textarea name="input" rows="15" required placeholder="Enter your text here!"></textarea>
         </div>

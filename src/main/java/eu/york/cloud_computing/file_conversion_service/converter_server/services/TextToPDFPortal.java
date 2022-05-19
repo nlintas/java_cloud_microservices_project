@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import javax.print.DocFlavor;
 import java.util.Collections;
 
 // This class is untestable as of now (all logic depends on a response from another service).
@@ -32,7 +35,7 @@ public class TextToPDFPortal {
 		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
 		HttpEntity<String> entity = new HttpEntity<>("body", headers);
 		// Get Result from Microservice
-		return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
+		return restTemplate.postForEntity(url, entity, byte[].class, input);
 	}
 
 }

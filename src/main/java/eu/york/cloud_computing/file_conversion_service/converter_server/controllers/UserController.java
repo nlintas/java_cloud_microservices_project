@@ -3,7 +3,9 @@ package eu.york.cloud_computing.file_conversion_service.converter_server.control
 import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -17,8 +19,8 @@ public class UserController {
     }
 
     // Endpoints
-    @RequestMapping("/txt2pdf")
-    public ResponseEntity<byte[]> requestTextToPdf(@RequestParam(defaultValue = "Test Text!") String input) {
+    @RequestMapping(method = RequestMethod.POST, value = "/txt2pdf")
+    public ResponseEntity<byte[]> requestTextToPdf(String input) {
         ResponseEntity<byte[]> res = textToPDFPortal.sendTextToPDFRequest(input);
         return res;
     }
