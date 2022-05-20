@@ -1,6 +1,5 @@
 package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.controllers;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.UserController;
 import eu.york.cloud_computing.file_conversion_service.converter_server.helpers.ExceptionResponseBuilder;
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.services.TextToPDFService;
 import org.springframework.http.MediaType;

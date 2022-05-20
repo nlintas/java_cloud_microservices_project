@@ -1,11 +1,11 @@
 package eu.york.cloud_computing.file_conversion_service.converter_server.helpers;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.helpers.ExceptionResponseBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExceptionResponseBuilderTest {
 

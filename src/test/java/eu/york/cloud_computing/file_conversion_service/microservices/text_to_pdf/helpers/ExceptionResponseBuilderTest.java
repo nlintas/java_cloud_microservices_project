@@ -1,11 +1,11 @@
 package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.helpers;
 
 import org.junit.jupiter.api.Test;
-import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.helpers.ExceptionResponseBuilder;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExceptionResponseBuilderTest {
 
