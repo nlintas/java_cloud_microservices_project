@@ -26,7 +26,7 @@ public class TextToPDFService {
             document.close();
             return output.toByteArray();
         } catch (Exception e) {
-            throw new Exception("Exception thrown when converting text to pdf at: " + e);
+            throw new RuntimeException("Exception thrown when converting text to pdf at: " + e);
         }
     }
 
