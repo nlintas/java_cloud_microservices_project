@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TextToPDFService {
     // Methods
-    public byte[] convertTextToPdf(String input) throws Exception {
+    public byte[] convertTextToPdf(String input) {
         try {
             // Create Pdf
             final ByteArrayOutputStream output = new ByteArrayOutputStream();

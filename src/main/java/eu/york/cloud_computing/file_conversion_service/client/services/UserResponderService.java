@@ -10,7 +10,7 @@ import java.util.Collections;
 
 // This class is untestable as of now (all logic depends on a response from another service).
 @Service
-public class TextToPDFPortal {
+public class UserResponderService {
     // Attributes
     @Autowired
     @LoadBalanced
@@ -19,7 +19,7 @@ public class TextToPDFPortal {
     protected String serviceUrl;
 
     // Constructor
-    public TextToPDFPortal(String serviceUrl) {
+    public UserResponderService(String serviceUrl) {
         this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl : "http://" + serviceUrl;
     }
 
