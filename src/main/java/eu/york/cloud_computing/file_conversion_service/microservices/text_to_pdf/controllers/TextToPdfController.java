@@ -24,7 +24,7 @@ public class TextToPdfController {
     }
 
     // Routes
-    @RequestMapping(method = RequestMethod.POST, value = "/txt2pdf")
+    @RequestMapping(method = RequestMethod.GET, value = "/txt2pdf")
     public ResponseEntity<?> serveTextToPdf(String input) {
         try {
             // Create pdf name

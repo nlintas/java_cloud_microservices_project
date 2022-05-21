@@ -21,7 +21,7 @@ public class UserController {
     }
 
     // Endpoints
-    @RequestMapping(method = RequestMethod.POST, value = "/txt2pdf")
+    @RequestMapping(method = RequestMethod.GET, value = "/txt2pdf")
     public ResponseEntity<?> requestTextToPdf(String input) {
         try {
             return textToPDFPortal.sendTextToPDFRequest(input);

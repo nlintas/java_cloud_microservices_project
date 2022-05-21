@@ -2,10 +2,7 @@ package eu.york.cloud_computing.file_conversion_service.client.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,7 +33,7 @@ public class TextToPDFPortal {
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
             HttpEntity<String> entity = new HttpEntity<>("body", headers);
             // Get Result from Microservice
-            return restTemplate.postForEntity(url, entity, byte[].class, input);
+            return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
         } catch (Exception e) {
             throw new RuntimeException("Failed to send request to microservice, cause: " + e);
         }
