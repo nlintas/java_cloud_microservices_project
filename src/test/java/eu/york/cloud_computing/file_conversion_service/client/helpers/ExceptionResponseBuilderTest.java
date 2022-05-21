@@ -1,4 +1,4 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server.helpers;
+package eu.york.cloud_computing.file_conversion_service.client.helpers;
 
 import org.junit.jupiter.api.Test;
 

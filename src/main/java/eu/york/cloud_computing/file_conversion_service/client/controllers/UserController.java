@@ -1,7 +1,7 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server.controllers;
+package eu.york.cloud_computing.file_conversion_service.client.controllers;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.helpers.ExceptionResponseBuilder;
-import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
+import eu.york.cloud_computing.file_conversion_service.client.helpers.ExceptionResponseBuilder;
+import eu.york.cloud_computing.file_conversion_service.client.services.TextToPDFPortal;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

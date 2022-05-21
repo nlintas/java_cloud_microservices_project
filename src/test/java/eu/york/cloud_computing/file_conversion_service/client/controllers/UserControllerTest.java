@@ -1,6 +1,6 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server.controllers;
+package eu.york.cloud_computing.file_conversion_service.client.controllers;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
+import eu.york.cloud_computing.file_conversion_service.client.services.TextToPDFPortal;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

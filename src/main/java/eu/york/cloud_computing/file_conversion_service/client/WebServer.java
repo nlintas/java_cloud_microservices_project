@@ -1,8 +1,8 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server;
+package eu.york.cloud_computing.file_conversion_service.client;
 
-import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.HomeController;
-import eu.york.cloud_computing.file_conversion_service.converter_server.controllers.UserController;
-import eu.york.cloud_computing.file_conversion_service.converter_server.services.TextToPDFPortal;
+import eu.york.cloud_computing.file_conversion_service.client.controllers.HomeController;
+import eu.york.cloud_computing.file_conversion_service.client.controllers.UserController;
+import eu.york.cloud_computing.file_conversion_service.client.services.TextToPDFPortal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -1,4 +1,4 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server.services;
+package eu.york.cloud_computing.file_conversion_service.client.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

@@ -1,4 +1,4 @@
-package eu.york.cloud_computing.file_conversion_service.converter_server.controllers;
+package eu.york.cloud_computing.file_conversion_service.client.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
