@@ -13,6 +13,7 @@ class UserControllerTest {
     UserResponderService userResponderService;
     UserController userController = new UserController(userResponderService);
 
+    // Integration Test
     @Test
     void controllerNotNull() {
         assertNotNull(userController);

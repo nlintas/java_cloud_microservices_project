@@ -17,16 +17,19 @@ public class UserController {
 
     // Constructor
     public UserController(UserResponderService userResponderService) {
+        // Add the service to the controller during creation
         this.userResponderService = userResponderService;
     }
 
     // Endpoints
+    // Expect a GET request.
     @RequestMapping(method = RequestMethod.GET, value = "/txt2pdf")
     public ResponseEntity<?> requestTextToPdf(String input) {
+        // Send request through the service to the text to pdf microservice.
         try {
             return userResponderService.sendTextToPDFRequest(input);
         }
-        // Catch any thrown exceptions and send a relevant response with a context.
+        // Catch exceptions from the user responder service and send a context-full response.
         catch (Exception exception) {
             Map<String, String> body = ExceptionResponseBuilder.buildExceptionResponse(exception.toString(), UserController.class.getSimpleName());
             return ResponseEntity.internalServerError().contentType(MediaType.APPLICATION_JSON).body(body);

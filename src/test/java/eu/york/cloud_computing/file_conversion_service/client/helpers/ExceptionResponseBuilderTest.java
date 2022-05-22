@@ -14,7 +14,7 @@ class ExceptionResponseBuilderTest {
         Map<String, String> res = ExceptionResponseBuilder.buildExceptionResponse("test", "someone");
         String expectedInString = "someone";
         String expectedInString2 = "test";
-        // Make sure its not null
+        // Make sure it's not null
         assertNotNull(res);
         // Check if result contains the given parameters
         assertTrue(res.toString().contains(expectedInString) && res.toString().contains(expectedInString2));

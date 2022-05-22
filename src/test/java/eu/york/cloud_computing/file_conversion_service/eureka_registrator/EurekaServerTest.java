@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 class EurekaServerTest {
 
-    // Integration Tests
+    // Integration Test
     @Test
-    void eurekaServerLoads() {
+    void eurekaServerLoadsMainMethod() {
         EurekaServer.main(new String[] {});
     }
 }

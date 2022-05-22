@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExceptionResponseBuilder {
+    // Creates an exception response by assembling the body.
     public static Map<String, String> buildExceptionResponse(String content, String creator){
         // Create JSON structure and add provided data
         Map<String, String> body = new HashMap<>();

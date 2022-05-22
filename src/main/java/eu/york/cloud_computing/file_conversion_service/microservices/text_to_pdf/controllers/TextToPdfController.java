@@ -23,29 +23,31 @@ public class TextToPdfController {
         this.textToPDFService = textToPDFService;
     }
 
-    // Routes
+    // Endpoints
     @RequestMapping(method = RequestMethod.GET, value = "/txt2pdf")
     public ResponseEntity<?> serveTextToPdf(String input) {
         try {
-            // Create pdf name
-            DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
-            String currentDateTime = dateFormatter.format(new Date());
-            // Prepare Headers
-            String headerKey = "Content-Disposition";
-            String headerValue = "inline; filename=pdf_" + currentDateTime + ".pdf";
             // Get converted result
             byte[] res;
             res = this.textToPDFService.convertTextToPdf(input);
-            // Send a response
+            // Create pdf name based on the date and time (flexible for frequent users, no duplicate names)
+            DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
+            String currentDateTime = dateFormatter.format(new Date());
+            // Prepare Headers to open PDF on the client and allow downloading.
+            String headerKey = "Content-Disposition";
+            String headerValue = "inline; filename=pdf_" + currentDateTime + ".pdf";
+            // Send a successful response
             return ResponseEntity.ok()
                     .header(headerKey, headerValue)
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(res);
         }
-        // Catch any thrown exceptions and send a relevant response with a context.
+        // Catch exceptions from the text to pdf service and send a context-full response.
         catch (Exception exception) {
             Map<String, String> body = ExceptionResponseBuilder.buildExceptionResponse(exception.toString(), TextToPdfController.class.getSimpleName());
-            return ResponseEntity.internalServerError().contentType(MediaType.APPLICATION_JSON).body(body);
+            return ResponseEntity.internalServerError()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(body);
         }
     }
 }

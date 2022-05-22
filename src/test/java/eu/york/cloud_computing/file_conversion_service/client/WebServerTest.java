@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class WebServerTest {
-
     // Integration Tests
     @Test
-    void webServerLoadsContextNotNull() {
+    void webServerLoadsMainMethodContextNotNull() {
         WebServer.main(new String[] {});
         // Context not null
         assertNotNull(WebServer.applicationContext);

@@ -19,13 +19,13 @@ class HomeControllerTest {
 
     HomeController homeController = new HomeController();
 
-    // Unit Tests
+    // Unit Test
     @Test
     void controllerNotNull() {
         assertNotNull(homeController);
     }
 
-    // Integration Tests
+    // Integration Test
     @Test
     void controllerRedirectSuccess() throws Exception {
         mockMvc.perform(get("/").content("index")).andExpect(status().isOk()).andExpect(forwardedUrl("index"));

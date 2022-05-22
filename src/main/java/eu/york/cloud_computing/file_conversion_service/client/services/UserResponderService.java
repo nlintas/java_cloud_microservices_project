@@ -24,20 +24,21 @@ public class UserResponderService {
     }
 
     // Endpoints
-    // Sends a request for a txt2pdf conversion to an external microservice.
+    // Sends a request for a txt2pdf conversion to an external microservice with the user input.
     public ResponseEntity<?> sendTextToPDFRequest(String input) {
         try {
             // Setup Headers & URL
             String url = serviceUrl + "/txt2pdf?input={input}";
             HttpHeaders headers = new HttpHeaders();
+            // Accept PDF media types responses
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
             HttpEntity<String> entity = new HttpEntity<>("body", headers);
-            // Get Result from Microservice
+            // Send a GET request to the text to pdf microservice's controller with the user input.
+            // Expect a byte[] format response.
             return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
         } catch (Exception e) {
             throw new RuntimeException("Failed to send request to microservice, cause: " + e);
         }
     }
-
 }
 
