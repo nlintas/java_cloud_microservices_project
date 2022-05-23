@@ -15,3 +15,6 @@ In this project several technologies will enable the creation of an application 
 - Docker (not yet integrated)
 - Kubernetes (not yet integrated)
 - Intellij IDEA
+
+## Report Location
+Inside the root of the exported code project as pdf and word formats.
