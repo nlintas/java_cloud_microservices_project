@@ -11,7 +11,7 @@
     </parent>
     <groupId>eu.york.microservices.fileconversion</groupId>
     <artifactId>client-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <description>In this project several technologies will enable the creation of an application that will allow for
         independent microservices to handle file conversion. These will coordinate initially with a Netflix Eureka
         server and then be Dockerized and managed by Kubernetes.

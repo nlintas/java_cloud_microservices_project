@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: eu.york.cloud_computing.file_conversion_service.client.WebSe
- rver
-
