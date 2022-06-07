@@ -1,0 +1,45 @@
+# Latest Docker Compose Version
+version: "3.8"
+services:
+  eureka:
+    # Requires the use of a previously built image with the given name
+    image: eureka
+    container_name: eureka
+    # Use the specified port exposed in the Dockerfile.
+    ports:
+      - "8761:8761"
+
+  conversion_service:
+    # Requires the use of a previously built image with the given name
+    image: conversion_service
+    container_name: conversion_service
+    # Use the specified port exposed in the Dockerfile.
+    ports:
+      - "2222:2222"
+    # Link with the eureka service
+    links:
+      - eureka
+    # Requires eureka to run.
+    depends_on:
+      - eureka
+    # Set the link to Eureka who will then perform the rest of service communication.
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+
+  client:
+    # Requires the use of a previously built image with the given name
+    image: client
+    container_name: client
+    # Use the specified port exposed in the Dockerfile.
+    ports:
+      - "4444:4444"
+    # Link with the eureka service
+    links:
+      - eureka
+    # Set the link to Eureka who will then perform the rest of service communication.
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+    # Requires eureka and conversion_service to run.
+    depends_on:
+      - eureka
+      - conversion_service

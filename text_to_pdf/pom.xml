@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>eu.york.microservices.fileconversion</groupId>
-    <artifactId>text-to-pdf-microservice</artifactId>
+    <artifactId>conversion-service</artifactId>
     <version>1.0.0</version>
     <description>In this project several technologies will enable the creation of an application that will allow for
         independent microservices to handle file conversion. These will coordinate initially with a Netflix Eureka
