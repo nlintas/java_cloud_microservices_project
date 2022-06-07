@@ -14,8 +14,11 @@ import org.springframework.stereotype.Service;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 public class TextToPDFService {
@@ -60,23 +63,37 @@ public class TextToPDFService {
             // Setup values for conversion
             final int DPI = 300;
             final ImageType IMAGE_COLOUR_PROFILE = ImageType.RGB;
-            String imageName;
-            // Setup return values
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-//            int page = 0;
-//            ZipOutputStream zip = new ZipOutputStream(raw))
-            for (int page = 0; page < PDF_PAGES; ++page) {
-            // content, dpi, image type
-            BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(page, DPI, IMAGE_COLOUR_PROFILE);
-            imageName = "name - " + (page + 1) + ".png";
-
-            // buffered image, imageName, output byte[]
-            ImageIO.write(bufferedImage, "PNG", output);
-//            ImageIOUtil.writeImage(bufferedImage, imageName, DPI); // working
+            // Setup output values
+            ByteArrayOutputStream imageOutput;
+            ByteArrayOutputStream zipOutput = new ByteArrayOutputStream();
+            ZipOutputStream zipInMemoryStream = new ZipOutputStream(zipOutput);
+            int page;
+            ZipEntry entry;
+            for (page = 0; page < PDF_PAGES; ++page) {
+                // Create image
+                System.out.println("Scanning image " + page + "...");
+                // Re-initialise stream for each image
+                imageOutput = new ByteArrayOutputStream();
+                // Scan the image in a buffer according to the page, DPI and colour profile.
+                BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(page, DPI, IMAGE_COLOUR_PROFILE);
+                // Create the image in memory in png format
+                ImageIO.write(bufferedImage, "PNG", imageOutput);
+                // Zipping
+                System.out.println("zipping " + page + "...");
+                // Set name and size of file for zipping
+                entry = new ZipEntry("page " + (page + 1) + ".png");
+                entry.setSize(imageOutput.toByteArray().length);
+                // Rotate entries
+                zipInMemoryStream.putNextEntry(entry);
+                // Write the image file in memory as a zip file
+                zipInMemoryStream.write(imageOutput.toByteArray());
             }
-//            document.save(output);
+            // Cleanup. Close pdf document, entry object and zip output.
             document.close();
-            return output.toByteArray();
+            zipInMemoryStream.closeEntry();
+            zipInMemoryStream.close();
+            // Return
+            return zipOutput.toByteArray();
         } catch (Exception e) {
             throw new RuntimeException("Exception thrown when converting pdf to image at: " + e);
         }

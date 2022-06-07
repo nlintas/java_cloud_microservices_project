@@ -3,6 +3,8 @@ package eu.york.cloud_computing.file_conversion_service.microservices.text_to_pd
 import com.netflix.discovery.shared.Pair;
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.helpers.ExceptionResponseBuilder;
 import eu.york.cloud_computing.file_conversion_service.microservices.text_to_pdf.services.TextToPDFService;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,19 +60,22 @@ public class TextToPdfController {
     public ResponseEntity<?> servePdfToImage(MultipartFile input) {
         try {
             // Get converted result
-            byte[] res;
-            res = this.textToPDFService.convertPdftoImage(input.getBytes());
+            byte[] response;
+            response = this.textToPDFService.convertPdftoImage(input.getBytes());
             // Create image name based on the date and time (flexible for frequent users, no duplicate names)
-//            DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
-//            String currentDateTime = dateFormatter.format(new Date());
-            // Prepare Headers
-//            String headerKey = "Content-Type";
-//            String headerValue = "image/png";
+            DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
+            String currentDateTime = dateFormatter.format(new Date());
+            // Set request headers
+            HttpHeaders headers = new HttpHeaders();
+            // Set name of zip file
+            ContentDisposition contentDisposition = ContentDisposition.builder("attachment").filename(currentDateTime + " images.zip").build();
+            headers.setContentDisposition(contentDisposition);
+            // Set response type
+            headers.setContentType(MediaType.valueOf("application/zip"));
             // Send a successful response
             return ResponseEntity.ok()
-//                    .header(headerKey, headerValue)
-                    .contentType(MediaType.IMAGE_PNG)
-                    .body(res);
+                    .headers(headers)
+                    .body(response);
         }
         // Catch exceptions from the text to pdf service and send a context-full response.
         catch (Exception exception) {
