@@ -4,5 +4,5 @@ FROM openjdk:18.0.1-jdk-oraclelinux7
 COPY target/eureka-server-1.0.0.jar ./
 # Expose a port
 EXPOSE 8761
-# Run copied jar file. Non-overidable Parameters
-ENTRYPOINT ["java", "-jar", "eureka-server-1.0.0.jar"]
+# Points to the java installation inside the image specifies type of runnable and points to its locations. Additional parameters such as the server port and the name of the container are provided.
+ENTRYPOINT ["/usr/java/openjdk-18/bin/java", "-jar", "eureka-server-1.0.0.jar", "--server.port=8761", "eureka"]
