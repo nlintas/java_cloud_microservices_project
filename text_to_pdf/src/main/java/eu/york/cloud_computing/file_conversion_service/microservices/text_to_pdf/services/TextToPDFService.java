@@ -79,7 +79,7 @@ public class TextToPDFService {
                 // Create the image in memory in png format
                 ImageIO.write(bufferedImage, "PNG", imageOutput);
                 // Zipping
-                System.out.println("zipping " + (page + 1));
+                System.out.println("Zipping " + (page + 1));
                 // Set name and size of file for zipping
                 entry = new ZipEntry("page " + (page + 1) + ".png");
                 entry.setSize(imageOutput.toByteArray().length);
