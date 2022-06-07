@@ -71,7 +71,7 @@ public class TextToPDFService {
             ZipEntry entry;
             for (page = 0; page < PDF_PAGES; ++page) {
                 // Create image
-                System.out.println("Scanning image " + page + "...");
+                System.out.println("Scanning image " + (page + 1));
                 // Re-initialise stream for each image
                 imageOutput = new ByteArrayOutputStream();
                 // Scan the image in a buffer according to the page, DPI and colour profile.
@@ -79,7 +79,7 @@ public class TextToPDFService {
                 // Create the image in memory in png format
                 ImageIO.write(bufferedImage, "PNG", imageOutput);
                 // Zipping
-                System.out.println("zipping " + page + "...");
+                System.out.println("zipping " + (page + 1));
                 // Set name and size of file for zipping
                 entry = new ZipEntry("page " + (page + 1) + ".png");
                 entry.setSize(imageOutput.toByteArray().length);
