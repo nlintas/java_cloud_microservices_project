@@ -12,7 +12,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageOutputStream;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @Service
 public class TextToPDFService {
@@ -52,7 +55,7 @@ public class TextToPDFService {
             PDFRenderer pdfRenderer = new PDFRenderer(document);
             final int PDF_PAGES = document.getNumberOfPages();
             // Validate PDF length
-            if(PDF_PAGES <= 0)
+            if (PDF_PAGES <= 0)
                 throw new RuntimeException("Exception thrown when converting pdf to image. Pdf received has no pages or is corrupted.");
             // Setup values for conversion
             final int DPI = 300;
@@ -60,13 +63,16 @@ public class TextToPDFService {
             String imageName;
             // Setup return values
             ByteArrayOutputStream output = new ByteArrayOutputStream();
+//            int page = 0;
 //            ZipOutputStream zip = new ZipOutputStream(raw))
             for (int page = 0; page < PDF_PAGES; ++page) {
-                // content, dpi, image type
-                BufferedImage bim = pdfRenderer.renderImageWithDPI(page, DPI, IMAGE_COLOUR_PROFILE);
-                imageName = "name - " + (page + 1) + ".png";
-                // buffered image, imageName, output byte[]
-                ImageIO.write(bim, imageName, output);
+            // content, dpi, image type
+            BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(page, DPI, IMAGE_COLOUR_PROFILE);
+            imageName = "name - " + (page + 1) + ".png";
+
+            // buffered image, imageName, output byte[]
+            ImageIO.write(bufferedImage, "PNG", output);
+//            ImageIOUtil.writeImage(bufferedImage, imageName, DPI); // working
             }
 //            document.save(output);
             document.close();
