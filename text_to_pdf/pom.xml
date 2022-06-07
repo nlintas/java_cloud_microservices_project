@@ -26,6 +26,17 @@
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.pdfbox</groupId>-->
+<!--            <artifactId>jbig2-imageio</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+        <!--        -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox-tools</artifactId>
+            <version>2.0.26</version>
+        </dependency>
         <!--   iText7 latest text to PDF converter     -->
         <dependency>
             <groupId>com.itextpdf</groupId>

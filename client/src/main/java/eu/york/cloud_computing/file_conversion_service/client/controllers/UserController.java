@@ -35,4 +35,23 @@ public class UserController {
             return ResponseEntity.internalServerError().contentType(MediaType.APPLICATION_JSON).body(body);
         }
     }
+
+    // Provide access to the pdf to image conversion page.
+    @RequestMapping("/pdf_image")
+    public String pdfToImagePageHandler() {
+        return "pdf2image";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/pdf2image")
+    public ResponseEntity<?> pdfToImageRequestHandler(byte[] input) {
+        // Send request through the service to the pdf to image microservice.
+        try {
+            return userResponderService.sendPdfToImageRequest(input);
+        }
+        // Catch exceptions from the user responder service and send a context-full response.
+        catch (Exception exception) {
+            Map<String, String> body = ExceptionResponseBuilder.buildExceptionResponse(exception.toString(), UserController.class.getSimpleName());
+            return ResponseEntity.internalServerError().contentType(MediaType.APPLICATION_JSON).body(body);
+        }
+    }
 }

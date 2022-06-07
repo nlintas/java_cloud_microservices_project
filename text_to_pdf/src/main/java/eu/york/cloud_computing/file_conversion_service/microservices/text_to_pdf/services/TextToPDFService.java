@@ -5,7 +5,14 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.springframework.stereotype.Service;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 @Service
 public class TextToPDFService {
@@ -33,6 +40,40 @@ public class TextToPDFService {
     // All pdf formatting should occur within. The document is preserved without a return.
     private void format(Document document, String input) {
         document.add(new Paragraph(input));
+    }
+
+    public byte[] convertPdftoImage(byte[] input) {
+        // Check if input is valid
+        if (input.length == 0)
+            throw new RuntimeException("Exception thrown when converting pdf to image. Pdf received was empty.");
+        try {
+            // Load to parsable PDF
+            PDDocument document = PDDocument.load(input);
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            final int PDF_PAGES = document.getNumberOfPages();
+            // Validate PDF length
+            if(PDF_PAGES <= 0)
+                throw new RuntimeException("Exception thrown when converting pdf to image. Pdf received has no pages or is corrupted.");
+            // Setup values for conversion
+            final int DPI = 300;
+            final ImageType IMAGE_COLOUR_PROFILE = ImageType.RGB;
+            String imageName;
+            // Setup return values
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+//            ZipOutputStream zip = new ZipOutputStream(raw))
+            for (int page = 0; page < PDF_PAGES; ++page) {
+                // content, dpi, image type
+                BufferedImage bim = pdfRenderer.renderImageWithDPI(page, DPI, IMAGE_COLOUR_PROFILE);
+                imageName = "name - " + (page + 1) + ".png";
+                // buffered image, imageName, output byte[]
+                ImageIO.write(bim, imageName, output);
+            }
+//            document.save(output);
+            document.close();
+            return output.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException("Exception thrown when converting pdf to image at: " + e);
+        }
     }
 }
 

@@ -37,7 +37,24 @@ public class UserResponderService {
             // Expect a byte[] format response.
             return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to send request to microservice, cause: " + e);
+            throw new RuntimeException("Failed to send a text to pdf  request to microservice, cause: " + e);
+        }
+    }
+
+    // Sends a request for a pdf2image conversion to an external microservice with the user input.
+    public ResponseEntity<?> sendPdfToImageRequest(byte[] input) {
+        try {
+            // Setup Headers & URL
+            String url = serviceUrl + "/pdf2image?input={input}";
+            HttpHeaders headers = new HttpHeaders();
+            // Accept PDF media types responses
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
+            HttpEntity<String> entity = new HttpEntity<>("body", headers);
+            // Send a GET request to the text to pdf microservice's controller with the user input.
+            // Expect a byte[] format response.
+            return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to send a pdf to image request to microservice, cause: " + e);
         }
     }
 }
