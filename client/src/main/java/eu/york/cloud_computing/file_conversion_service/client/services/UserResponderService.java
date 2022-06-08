@@ -6,7 +6,9 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Base64;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 
 // This class is untestable as of now (all logic depends on a response from another service).
 @Service
@@ -42,20 +44,27 @@ public class UserResponderService {
     }
 
     // Sends a request for a pdf2image conversion to an external microservice with the user input.
-    public ResponseEntity<?> sendPdfToImageRequest(byte[] input) {
+    public byte[] sendPdfToImageRequest(byte[] input) {
         try {
             // Setup Headers & URL
             String url = serviceUrl + "/pdf2image?input={input}";
             HttpHeaders headers = new HttpHeaders();
             // Accept PDF media types responses
-            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             HttpEntity<String> entity = new HttpEntity<>("body", headers);
             // Send a GET request to the text to pdf microservice's controller with the user input.
-            // Expect a byte[] format response.
-            return restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, input);
+            ResponseEntity<LinkedHashMap> response = restTemplate.exchange(url, HttpMethod.GET, entity, LinkedHashMap.class, input);
+            LinkedHashMap<String, String> endpointReturn = response.getBody();
+            String pdf;
+            if (endpointReturn != null) {
+                pdf = endpointReturn.get("pdf");
+            } else {
+                throw new RuntimeException("Received null pdf response.");
+            }
+            byte[] decoded = Base64.getDecoder().decode(pdf);
+            return decoded;
         } catch (Exception e) {
             throw new RuntimeException("Failed to send a pdf to image request to microservice, cause: " + e);
         }
     }
 }
-

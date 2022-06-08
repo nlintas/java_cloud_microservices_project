@@ -42,7 +42,7 @@ public class TextToPdfController {
             String currentDateTime = dateFormatter.format(new Date());
             // Prepare Headers signify its caring a pdf.
             HttpHeaders headers = new HttpHeaders();
-            ContentDisposition contentDisposition = ContentDisposition.builder("attachment").filename(currentDateTime + " .pdf").build();
+            ContentDisposition contentDisposition = ContentDisposition.builder("attachment").filename(currentDateTime + ".pdf").build();
             headers.setContentDisposition(contentDisposition);
             headers.setContentType(MediaType.APPLICATION_JSON);
             // Assemble HATEOAS response (Converts to Base64 String automatically)
@@ -70,11 +70,11 @@ public class TextToPdfController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/pdf2image")
-    public ResponseEntity<?> servePdfToImage(MultipartFile input) {
+    public ResponseEntity<?> servePdfToImage(byte[] input) {
         try {
             // Get converted result
             byte[] res;
-            res = this.textToPDFService.convertPdftoImage(input.getBytes());
+            res = this.textToPDFService.convertPdftoImage(input);
             // Create image name based on the date and time (flexible for frequent users, no duplicate names)
             DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
             String currentDateTime = dateFormatter.format(new Date());

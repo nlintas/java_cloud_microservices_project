@@ -11,18 +11,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = HomeController.class)
+@SpringBootTest(classes = PageController.class)
 @AutoConfigureMockMvc
-class HomeControllerTest {
+class PageControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    HomeController homeController = new HomeController();
+    PageController pageController = new PageController();
 
     // Unit Test
     @Test
     void controllerNotNull() {
-        assertNotNull(homeController);
+        assertNotNull(pageController);
     }
 
     // Integration Test
