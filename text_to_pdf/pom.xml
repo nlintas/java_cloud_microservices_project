@@ -26,12 +26,12 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.pdfbox</groupId>-->
-<!--            <artifactId>jbig2-imageio</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
-        <!--        -->
+        <!--    Enable HATEOAS    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <!--   Used for pdf to image conversion as iText requires paid software for this.     -->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox-tools</artifactId>

@@ -8,15 +8,10 @@ import com.itextpdf.layout.element.Paragraph;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
-import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageOutputStream;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
