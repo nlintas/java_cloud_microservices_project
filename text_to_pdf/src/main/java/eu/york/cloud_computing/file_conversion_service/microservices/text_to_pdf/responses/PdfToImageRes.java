@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.hateoas.RepresentationModel;
 
 public class PdfToImageRes extends RepresentationModel<PdfToImageRes> {
-    @JsonProperty("pdf")
+    @JsonProperty("zip")
     public final byte[] zip;
 
     @JsonCreator

@@ -35,7 +35,20 @@ public class UserController {
     public ResponseEntity<?> requestTextToPdf(String input) {
         // Send request through the service to the text to pdf microservice.
         try {
-            return userResponderService.sendTextToPDFRequest(input);
+            byte[] res;
+            res = userResponderService.sendTextToPDFRequest(input);
+            // Create pdf name based on the date and time
+            DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
+            String currentDateTime = dateFormatter.format(new Date());
+            // Prepare Headers signify its caring a pdf.
+            HttpHeaders headers = new HttpHeaders();
+            ContentDisposition contentDisposition = ContentDisposition.builder("inline").filename(currentDateTime + ".pdf").build();
+            headers.setContentDisposition(contentDisposition);
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            // Send a successful response
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(res);
         }
         // Catch exceptions from the user responder service and send a context-full response.
         catch (Exception exception) {
