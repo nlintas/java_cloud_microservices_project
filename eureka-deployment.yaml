@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --file docker-compose.yml convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: eureka
+  name: eureka
+spec:
+  replicas: 3 #Difference
+  selector:
+    matchLabels:
+      io.kompose.service: eureka
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose --file docker-compose.yml convert
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: eureka
+    spec:
+      containers:
+        - image: europe-west1-docker.pkg.dev/cloud-computing-cw-352806/cloud-repo/eureka #Difference
+          name: eureka
+          ports:
+            - containerPort: 8761
+          resources: {}
+      restartPolicy: Always
+status: {}
