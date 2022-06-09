@@ -25,6 +25,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>spring-cloud-gcp-core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
         <!--   iText7 latest text to PDF converter     -->
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -89,7 +94,6 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <!--        Depends on the Spring Cloud version which is now the latest.        -->
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
