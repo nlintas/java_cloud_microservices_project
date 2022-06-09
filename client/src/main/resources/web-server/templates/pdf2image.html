@@ -1,19 +1,20 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 
 <head th:replace="header :: copy"></head>
 
 <body>
 <div class="client-ui">
-    <h1 class="text-center mt-3"><i class="bi bi-filetype-pdf"></i> PDF to Image <i class="bi bi-file-image"></i> Converter - Client Microservice</h1>
+    <h1 class="text-center mt-3"><i class="bi bi-filetype-pdf"></i> PDF to Image <i class="bi bi-file-image"></i>
+        Converter - Client Microservice</h1>
     <p class="fs-5">Convert your pdf to an image
         <mark>instantly!</mark>
     </p>
-    <form action="/pdf2image">
-        <podiv class="user-input-wrapper">
-            <input name="input" type="file" accept="application/pdf">
-        </podiv>
+    <form method="post" action="/pdf2image" enctype="multipart/form-data">
+        <div class="user-input-wrapper">
+            <input name="file" type="file" accept="application/pdf">
+        </div>
         <div class="text-center">
             <input class="btn btn-primary mt-3" type="submit" value="Submit">
         </div>

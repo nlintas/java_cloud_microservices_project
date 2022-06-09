@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:substituteby="header :: copy"></head>
+<head th:replace="header :: copy"></head>
 
 <body>
 <h1 class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i> An Error Has Occurred - Text2PDF
@@ -37,7 +37,7 @@
         th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
     Cause unknown (no exception details available)</p>
 
-<div th:substituteby="footer :: copy"></div>
+<div th:replace="footer :: copy"></div>
 
 </body>
 </html>
