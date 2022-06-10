@@ -3,7 +3,7 @@ version: "3.8"
 services:
   eureka:
     # Requires the use of a previously built image with the given name
-    image: eureka
+    image: eureka2
     container_name: eureka
     # Use the specified port exposed in the Dockerfile.
     ports:
@@ -11,7 +11,7 @@ services:
 
   conversion_service:
     # Requires the use of a previously built image with the given name
-    image: conversion_service
+    image: conversion_service2
     container_name: conversion_service
     # Use the specified port exposed in the Dockerfile.
     ports:
@@ -28,7 +28,7 @@ services:
 
   client:
     # Requires the use of a previously built image with the given name
-    image: client
+    image: client2
     container_name: client
     # Use the specified port exposed in the Dockerfile.
     ports:

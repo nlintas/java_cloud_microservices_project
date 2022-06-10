@@ -1,11 +1,14 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="header :: copy"></head>
 
 <body>
 <div class="client-ui">
+    <div class="text-left mt-3">
+        <button class="btn btn-primary" onClick="location.href='/'" type="button"><i class="bi bi-card-text"></i> Text to Pdf <i class="bi bi-filetype-pdf"></i></button>
+    </div>
     <h1 class="text-center mt-3"><i class="bi bi-filetype-pdf"></i> PDF to Image <i class="bi bi-file-image"></i>
         Converter - Client Microservice</h1>
     <p class="fs-5">Convert your pdf to an image
