@@ -5,6 +5,7 @@ GCLOUD_REPOSITORY=cloud-repo
 GCLOUD_CLUSTER=cloud-cluster
 GCLOUD_REGION=europe-west1
 GCLOUD_ZONE=europe-west1-b
+GCLOUD_PROJECT_ID=cloud-computing-cw-352806
 
 # Functions
 cleanup_docker() {
@@ -34,9 +35,9 @@ build_eureka() {
     mvn clean package -Dmaven.test.skip
     docker buildx build --platform=linux/amd64 -t eureka .
     echo "Tagging Eureka Docker Image"
-    docker tag eureka $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/eureka
+    docker tag eureka $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/eureka
     echo "Pushing Eureka Docker Image to Google Cloud"
-    docker push $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/eureka
+    docker push $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/eureka
 }
 
 build_conversion_service() {
@@ -45,9 +46,9 @@ build_conversion_service() {
     mvn clean package -Dmaven.test.skip
     docker buildx build --platform=linux/amd64 -t conversion_service .
     echo "Tagging Conversion Service Docker Image"
-    docker tag conversion_service $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/conversion_service
+    docker tag conversion_service $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/conversion_service
     echo "Pushing Conversion Service Docker Image to Google Cloud"
-    docker push $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/conversion_service
+    docker push $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/conversion_service
 }
 
 build_client() {
@@ -56,9 +57,9 @@ build_client() {
     mvn clean package -Dmaven.test.skip
     docker buildx build --platform=linux/amd64 -t client .
     echo "Tagging Client Docker Image"
-    docker tag client $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/client
+    docker tag client $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/client
     echo "Pushing Client Docker Image to Google Cloud"
-    docker push $GCLOUD_REGION-docker.pkg.dev/cloud-computing-cw-352806/$GCLOUD_REPOSITORY/client
+    docker push $GCLOUD_REGION-docker.pkg.dev/$GCLOUD_PROJECT_ID/$GCLOUD_REPOSITORY/client
 }
 
 prepare_kubernetes() {
