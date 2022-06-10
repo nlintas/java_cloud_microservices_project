@@ -11,21 +11,21 @@ cleanup_docker(){
 build_eureka() {
     echo "Building Eureka Docker Image"
     cd "eureka"
-    mvn clean package
+    mvn clean package -Dmaven.test.skip
     docker build -t eureka .
 }
 
 build_conversion_service() {
     echo "Building Conversion Service Docker Image"
     cd "text_to_pdf"
-    mvn clean package
+    mvn clean package -Dmaven.test.skip
     docker build -t conversion_service .
 }
 
 build_client() {
     echo "Building Client Docker Image"
     cd "client"
-    mvn clean package
+    mvn clean package -Dmaven.test.skip
     docker build -t client .
 }
 
