@@ -30,6 +30,7 @@ spec:
             - name: eureka.instance.preferIPAddress
               value: "true"
           image: europe-west1-docker.pkg.dev/cloud-computing-cw-352806/cloud-repo/conversion_service  #Difference
+          imagePullPolicy: Always #Difference
           name: conversion-service
           ports:
             - containerPort: 2222
