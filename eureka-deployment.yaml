@@ -25,6 +25,7 @@ spec:
     spec:
       containers:
         - image: europe-west1-docker.pkg.dev/cloud-computing-cw-352806/cloud-repo/eureka #Difference
+          imagePullPolicy: Always #Difference
           name: eureka
           ports:
             - containerPort: 8761
