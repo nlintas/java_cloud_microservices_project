@@ -41,4 +41,4 @@ Follow the steps:
 - Intellij IDEA
 
 ## Report Location
-Inside both repositories (is should be .zip files in your case) as  a "WMY21040 Report 2.pdf" file.
+In the main zip folder named "WMY21040 submission" as a pdf file.
