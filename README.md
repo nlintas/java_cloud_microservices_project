@@ -6,7 +6,7 @@ In this project several technologies will enable the creation of an application 
 2. Initialize the conversion microservice.
 3. Initialize the web server. 
 4. Open all web pages through the ports provided from Eureka (Eureka is at port 8761).
-   1. If an error occurs where no conversion/text to pdf microservice is avaliable wait for a minute so that it registers with Eureka and try again.
+   1. If an error occurs where no conversion/text to pdf microservice is available wait for a minute so that it registers with Eureka and try again.
 
 ## Run Locally Docker Compose Instructions
 Run from the root directory the `test_local_docker_compose.sh` file.
@@ -39,6 +39,3 @@ Follow the steps:
 - Kubernetes
 - Google Cloud
 - Intellij IDEA
-
-## Report Location
-In the main zip folder named "WMY21040 submission" as a pdf file.
