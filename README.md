@@ -42,6 +42,3 @@ Follow the steps:
 - Kubernetes
 - Google Cloud
 - Intellij IDEA
-
-## Report Location
-In the main zip folder named "WMY21040 submission" as a pdf file.
